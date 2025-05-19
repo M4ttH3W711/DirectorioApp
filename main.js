@@ -17,3 +17,12 @@ consumirApi();
 
 // TAREA EN INGLÉS
 // Consumir otra API y mostrar la data en consola como acá arriba
+
+const consumeApi = () => {
+    fetch("https://jsonplaceholder.typicode.com/albums")
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error))
+};
+
+consumeApi();
