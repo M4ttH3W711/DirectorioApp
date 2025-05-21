@@ -7,9 +7,9 @@ const consumirApi = () => {
     fetch("https://jsonplaceholder.typicode.com/users")
     //Convertimos la respuesta a tipo "JSON"
     .then((response) => response.json())
-    //Los datos los vamos a amandar a la consola:
+    //Los datos los vamos a mandar a la consola:
     .then((data) => {
-            //La data de la API la vamos a llevar al HTML
+    //La data de la API la vamos a llevar al HTML
     //Paso 1: Definimos las constantes que vamos a usar y el HTML que vamos a afectar
     const nombre = document.getElementById("nombre");
     const nombreUsuario = document.getElementById("nombreUsuario");
@@ -24,21 +24,37 @@ const consumirApi = () => {
     //const geo = document.getElementById("geo");
     const lat = document.getElementById("lat");
     const lng = document.getElementById("lng");
+    const contenedor = document.getElementById("contenedor");
 
     nombre.innerText = data[0].name;
     nombreUsuario.innerText = data[0].username;
     email.innerText = data[0].email;
     phone.innerText = data[0].phone;
     website.innerText = data[0].website;
-    //address.innerText = data[0].address;
-    street.innerText = data[0].address.street;
+    address.innerHTML = `<h4>Address:</h4>`;
+    street.innerHTML = `<h6>${data[0].address.street}</h6>`
+    //street.innerHTML = data[0].address.street
     suite.innerText = data[0].address.suite;
     city.innerText = data[0].address.city;
     zipcode.innerText = data[0].address.zipcode;
-    //geo.innerText = data[0].address.geo;
+    geo.innerHTML = `<h4>Geo:</h4>`;
     lat.innerText = data[0].address.geo.lat;
     lng.innerText = data[0].address.geo.lng;
-        
+    
+    //AQUÍ VAMOS A FACILITARNOS LA VIDA CON: FOR EACH
+    data.forEach(
+        (personita, index) => 
+            (contenedor.innerHTML += `
+                
+                <p>${personita.name}</p>
+                <p>${personita.username}</p>
+                <p>${personita.email}</p>
+                <p>${personita.phone}</p>
+                <p>${personita.website}</p>
+                <hr>
+                
+            `)
+    );
     })
     //Descubrir qué hacer en caso de que no me corresponda
     .catch((error) => console.log(error));
@@ -56,7 +72,7 @@ const consumirApi = () => {
 
 consumirApi();
 
-// Tarea: Agregar otra API:
+/* Tarea: Agregar otra API:
 
 const consumeApi = () => {
     fetch("https://jsonplaceholder.typicode.com/albums")
@@ -65,10 +81,4 @@ const consumeApi = () => {
     .catch((error) => console.log(error))
 };
 
-consumeApi();
-
-//Tarea sobre métodos y arreglos en java script
-//Tarea 2: Mostrar los datos del objeto en el HTML
-/*
-addres": {etccc.....
-*/
+consumeApi();*/
