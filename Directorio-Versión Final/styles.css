@@ -1,0 +1,37 @@
+/* Esto nos sirve para definir la clase padre para que los elemenos hijios
+estén dentro de una grilla o cuadricula (grid)
+*/
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 15px;
+  align-items: center;
+}
+
+/*
+TAREA
+MEDIA QUERY
+COMO ALINEAR LOS ELEMENTOS VISUALMENTE
+*/
+
+@media (max-width: 600px) {
+  h2 {
+    text-align: center;
+  }
+
+  h4 {
+    text-align: center;
+  }
+
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 15px;
+    align-items: center;
+  }
+}
